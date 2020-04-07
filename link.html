@@ -51,11 +51,13 @@
       </div>
     </div>
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <script src="./js/sweetalert2.all.min.js"></script>
+  
   <script>
     $("#postimage").submit(function () {
-
       var urlimg = $('#urlimg').val();
       $.ajax({
         method: "post",
@@ -65,13 +67,23 @@
         },
           dataType: "text",
           success: function (d) {
-            console.log('Success');
-            $('#showal').show();
+           
           },
           error: function (x, y, z) {
-            console.log('Error')
+            console.log('Success');
+            $('#showal').show();
+            Swal.fire({
+                    position: 'top-end',
+                    type: 'success',
+                    title: '<h5><b>Upload Success </b></h5>',
+                    showConfirmButton: false,
+                    width: '300px',
+                    timer: 2000
+                });
           }
         });
+        return false;
+
     });
 
   </script>
