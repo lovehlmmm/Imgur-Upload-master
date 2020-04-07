@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Upload with URL</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="row space-16">&nbsp;</div>
+      <div class="row">
+        <div class="col">
+          <div class="thumbnail">
+            <div class="caption text-center">
+              <div class="position-relative">
+                <img src="./css/Maximus_free-file.png" style="width:20%" />
+              </div>
+
+              <form id="postimage">
+                <div class="form-group">
+                  <label for="text">Image URL:</label>
+                  <input type="text" class="form-control" id="urlimg" name="linkimage" required>
+                </div>
+
+                <button type="submit" class="btn btn-default">Upload</button>
+
+              </form>
+              
+              
+              <br>
+              <h4 style="display: none;color: blueviolet;" id="showal">Upload success <span
+                  class="label label-success">Maximus</span></h4>
+            </div>
+            <div class="caption card-footer text-center">
+              <ul class="list-inline">
+                <li>
+                  <p><i class="glyphicon glyphicon-user light-red lighter bigger-120"></i>&nbsp;Maximus</p>
+                </li>
+                <li><i class="glyphicon glyphicon-envelope lighter"></i><a href="#">&nbsp;Discord</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script>
+    $("#postimage").submit(function () {
+
+      var urlimg = $('#urlimg').val();
+      $.ajax({
+        method: "post",
+        url: "https://maximus-ver2.glitch.me/girl/create",
+        data: {
+          "Url": urlimg
+        },
+          dataType: "text",
+          success: function (d) {
+            console.log('Success');
+            $('#showal').show();
+          },
+          error: function (x, y, z) {
+            console.log('Error')
+          }
+        });
+    });
+
+  </script>
+</body>
+
+</html>
