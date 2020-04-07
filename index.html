@@ -1,27 +1,124 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>Imgur-Upload</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link href="./css/style.css" rel="stylesheet" media="screen">
     <link href="./css/mobile-style.css" rel="stylesheet" media="screen">
     <link rel="shortcut icon" href="./favicon.png">
+    <title>Upload Images IMGUR</title>
+
 </head>
 
 <body>
-    <div class="title">
-        <h1>Imgur Upload API</h1>
-        <p>Upload Image To Maximus </p>
+
+
+    <div class="container">
+        <div class="scene-component">
+            <div class="scene-content">
+               <div class="row justify-content-center align-items-center" >
+                <img src="./css/Maximus_free-file.png">
+               </div>
+                <div class="divider">
+                    <img src="https://lolstatic-a.akamaihd.net/frontpage/apps/prod/signup/pt_BR/0bc78d98664bfc6d17e91d1e482c3d8a1651571b/assets/pt_BR/assets/divider-download.png"
+                        alt="divide" width="100%">
+                </div>
+
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#home">Upload From Computer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#menu1">Upload Form URL</a>
+                    </li>
+
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div id="home" class="container tab-pane active"><br>
+                        <div class="title">
+                            <h1>Imgur Upload API</h1>
+                            <p>Upload Image To Maximus </p>
+                        </div>
+                        <div class="dropzone">
+                            <div class="info"></div>
+                        </div>
+
+                    </div>
+                    <div id="menu1" class="container tab-pane fade"><br>
+
+                        <div class="container-fluid h-100">
+                            <div class="row justify-content-center align-items-center h-100">
+                                <div class="col col-sm-6 col-md-6 col-lg-6 ">
+                                    <form id="postimage">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="urlimg" name="linkimage"
+                                            required placeholder="Url Image">
+                                        </div>
+                                      
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-success btn-lg btn-block">Upload</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+
+        </div>
     </div>
-    <div class="dropzone">
-        <div class="info"></div>
-    </div>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="./js/imgur.js"></script>
     <script type="text/javascript" src="./js/upload.js"></script>
+
+    <script src="./js/sweetalert2.all.min.js"></script>
+
+    <script>
+        $("#postimage").submit(function () {
+            var urlimg = $('#urlimg').val();
+            $.ajax({
+                method: "post",
+                url: "https://maximus-ver2.glitch.me/girl/create",
+                data: {
+                    "Url": urlimg
+                },
+                dataType: "text",
+                success: function (d) {
+
+                },
+                error: function (x, y, z) {
+                    console.log('Success');
+                    Swal.fire({
+                        position: 'top-end',
+                        type: 'success',
+                        title: '<h5><b>Upload Success </b></h5>',
+                        showConfirmButton: false,
+                        width: '300px',
+                        timer: 2000
+                    });
+                }
+            });
+            return false;
+
+        });
+
+    </script>
 </body>
 
 </html>

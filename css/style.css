@@ -1,6 +1,4 @@
-@charset "UTF-8";
-
-/* Imgur Upload Style */
+ 
 
 body.loading .loading-modal {
     display: block
@@ -43,6 +41,8 @@ body.loading .loading-modal {
     width: 100%
 }
 
+ 
+
 .status {
     border-radius: 5px;
     text-align: center;
@@ -82,3 +82,37 @@ body.loading .loading-modal {
     margin-top: 25px;
 
 }
+
+
+.ul.nav.nav-tabs {
+    font-size: 25px;
+ }
+ 
+.nav-tabs {
+    border-bottom: 4px solid #fff;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #ffffff;
+    background-color: #937341;
+    border-color: #dee2e6 #dee2e6 #fff;
+}
+a {
+    color: #937341;
+    text-decoration: none;
+    font-weight: 700;
+    background-color: transparent;
+}
+a:hover {
+    color: #ffffff;
+}
+
+body{
+    background-image: url('bg.jpg');
+    color: #fff;
+}
+
+.thumbnail{
+    background-color: #fff;
+
+}
+ 

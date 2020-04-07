@@ -35,7 +35,7 @@
               
               
               <br>
-              <h4 style="display: none;color: blueviolet;" id="showal">Upload success <span
+              <h4 style="display: none;color: blueviolet;" id="showal"> <span
                   class="label label-success">Maximus</span></h4>
             </div>
             <div class="caption card-footer text-center">
@@ -58,6 +58,7 @@
   
   <script>
     $("#postimage").submit(function () {
+      $('#showal').hide();
       var urlimg = $('#urlimg').val();
       $.ajax({
         method: "post",
