@@ -91,73 +91,93 @@
     <script src="./js/sweetalert2.all.min.js"></script>
 
     <script>
+
+        async function doAjax(args) {
+            let result;
+            try {
+                result = await $.ajax({
+                    url: 'https://maximus-ver2.glitch.me/girl/create',
+                    type: 'POST',
+                    data: args
+                });
+
+                return result;
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        async function createImages(list) {
+
+            await Promise.all(list.map(async (item) => {
+                doAjax({Url: item}).then(data => {
+                    console.log('success');
+                });
+               
+            }));
+        }
+
+
         $("#postimage").submit(function () {
-            let n = 0;
-            var run = true;
 
             var urlimg = $('#urlimg').val();
+            var ar = urlimg.split(',');
 
-            var  url = "https://maximus-ver2.glitch.me/girl/create";
-            // var regex = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/g;
+            createImages(ar).then(success => {
+                Swal.fire({
+                    position: 'top-end',
+                    type: 'success',
+                    title: '<h5><b>Upload Success </b></h5>',
+                    showConfirmButton: false,
+                    width: '300px',
+                    timer: 2000
+                });
+            });
 
-            // var convert = regex.test(urlimg);
-
-            if (urlimg != null) {
-
-                var ar = urlimg.split(',');
-
-                console.log(ar);
-
-                // while (n < ar.length) {
-                //     if (run === true) {
-
-                //         run = false;
-
-                //         $.post(url, {"Url": ar[n]}, function (json) {
-                //             run = true;
-                //             console.log('Upload success');
-                //         });
-
-
-                //         // $.ajax({
-                //         //     method: "post",
-                //         //     url: "https://maximus-ver2.glitch.me/girl/create",
-                //         //     data: {
-                //         //         "Url": ar[n]
-                //         //     },
-                //         //     dataType: "text",
-                //         //     success: function (message) {
-                //         //         run = true;
-                //         //         console.log('Upload success');
-                //         //         n++
-                //         //     },
-                //         //     error: function (x, y, z) {
-                //         //         console.log('error upload');
-                //         //     }
-                //         // });
-                //     }
-                // }
-                $.post(url, {"Url": 'https://asiansister.com/images/items/49/1492_7_zO7KY8bjnncEJY42UiE2.jpg'}, function (json) {
-                            run = true;
-                            console.log('Upload success');
-                        });
-
-            } else {
-                console.log('Error Regex');
-            }
             return false;
         });
 
+
+
+        // let n = 0;
+
+        // var run = true;
+
+        // var urlimg = $('#urlimg').val();
+
+        // var url = "https://maximus-ver2.glitch.me/girl/create";
+        // // var regex = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/g;
+
+        // // var convert = regex.test(urlimg);
+
+        // if (urlimg != null) {
+
+        //     var ar = urlimg.split(',');
+
+        //     console.log(ar);
+
+        //     while (n < ar.length) {
+
+        //         if (run) {
+        //             run = false;
+        //             $.post(url, {"Url": ar[n]}, function (json) {
+        //                 console.log('Upload success');
+        //                 run = true;
+        //             });
+        //         }
+        //         //n++;
+        //         console.log(n++);
+        //     }
+
+
+        // } else {
+        //     console.log('Error Regex');
+        // }
     </script>
+
+
+
+
 </body>
 
 </html>
-
-<!-- Swal.fire({
-    position: 'top-end',
-    type: 'success',
-    title: '<h5><b>Upload Success </b></h5>',
-    showConfirmButton: false,
-    width: '300px',
-    timer: 2000
-}); -->
