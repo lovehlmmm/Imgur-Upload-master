@@ -99,10 +99,7 @@
                     "Url": urlimg
                 },
                 dataType: "text",
-                success: function (d) {
-
-                },
-                error: function (x, y, z) {
+                success: function (message) {
                     console.log('Success');
                     Swal.fire({
                         position: 'top-end',
@@ -112,6 +109,10 @@
                         width: '300px',
                         timer: 2000
                     });
+                },
+                error: function (x, y, z) {
+                    console.log('error');
+
                 }
             });
             return false;
