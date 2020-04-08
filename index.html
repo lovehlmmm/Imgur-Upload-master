@@ -20,9 +20,9 @@
     <div class="container">
         <div class="scene-component">
             <div class="scene-content">
-               <div class="row justify-content-center align-items-center" >
-                <img src="./css/Maximus_free-file.png">
-               </div>
+                <div class="row justify-content-center align-items-center">
+                    <img src="./css/Maximus_free-file.png">
+                </div>
                 <div class="divider">
                     <img src="https://lolstatic-a.akamaihd.net/frontpage/apps/prod/signup/pt_BR/0bc78d98664bfc6d17e91d1e482c3d8a1651571b/assets/pt_BR/assets/divider-download.png"
                         alt="divide" width="100%">
@@ -54,15 +54,16 @@
 
                         <div class="container-fluid h-100">
                             <div class="row justify-content-center align-items-center h-100">
-                                <div class="col col-sm-6 col-md-6 col-lg-6 ">
+                                <div class="col col-sm-8 col-md-8 col-lg-8 ">
                                     <form id="postimage">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="urlimg" name="linkimage"
-                                            required placeholder="Url Image">
+                                            <textarea class="form-control" id="urlimg" name="linkimage" required
+                                                rows="10"></textarea>
                                         </div>
-                                      
+
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-success btn-lg btn-block">Upload</button>
+                                            <button type="submit"
+                                                class="btn btn-success btn-lg btn-block">Upload</button>
                                         </div>
                                     </form>
                                 </div>
@@ -91,35 +92,72 @@
 
     <script>
         $("#postimage").submit(function () {
+            let n = 0;
+            var run = true;
+
             var urlimg = $('#urlimg').val();
-            $.ajax({
-                method: "post",
-                url: "https://maximus-ver2.glitch.me/girl/create",
-                data: {
-                    "Url": urlimg
-                },
-                dataType: "text",
-                success: function (message) {
-                    console.log('Success');
-                    Swal.fire({
-                        position: 'top-end',
-                        type: 'success',
-                        title: '<h5><b>Upload Success </b></h5>',
-                        showConfirmButton: false,
-                        width: '300px',
-                        timer: 2000
-                    });
-                },
-                error: function (x, y, z) {
-                    console.log('error');
 
-                }
-            });
+            var  url = "https://maximus-ver2.glitch.me/girl/create";
+            // var regex = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/g;
+
+            // var convert = regex.test(urlimg);
+
+            if (urlimg != null) {
+
+                var ar = urlimg.split(',');
+
+                console.log(ar);
+
+                // while (n < ar.length) {
+                //     if (run === true) {
+
+                //         run = false;
+
+                //         $.post(url, {"Url": ar[n]}, function (json) {
+                //             run = true;
+                //             console.log('Upload success');
+                //         });
+
+
+                //         // $.ajax({
+                //         //     method: "post",
+                //         //     url: "https://maximus-ver2.glitch.me/girl/create",
+                //         //     data: {
+                //         //         "Url": ar[n]
+                //         //     },
+                //         //     dataType: "text",
+                //         //     success: function (message) {
+                //         //         run = true;
+                //         //         console.log('Upload success');
+                //         //         n++
+                //         //     },
+                //         //     error: function (x, y, z) {
+                //         //         console.log('error upload');
+                //         //     }
+                //         // });
+                //     }
+                // }
+                $.post(url, {"Url": 'https://asiansister.com/images/items/49/1492_7_zO7KY8bjnncEJY42UiE2.jpg'}, function (json) {
+                            run = true;
+                            console.log('Upload success');
+                        });
+
+            } else {
+                console.log('Error Regex');
+            }
             return false;
-
         });
 
     </script>
 </body>
 
 </html>
+
+<!-- Swal.fire({
+    position: 'top-end',
+    type: 'success',
+    title: '<h5><b>Upload Success </b></h5>',
+    showConfirmButton: false,
+    width: '300px',
+    timer: 2000
+}); -->
